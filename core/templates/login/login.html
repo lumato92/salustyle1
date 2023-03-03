@@ -1,0 +1,87 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALU-STYLE|LOGIN</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icono.ico' %}">
+</head>
+
+<body class="home">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col vh-100 logo d-flex justify-content-center align-content-center flex-wrap ">
+                <img src="{% static 'images/logo.png' %}" alt="" style="height: 40%; width: 80%;">
+            </div>
+            <div class="col vh-100 d-flex justify-content-center align-content-center flex-wrap login">
+                <div class="card shadow border-0">
+                    <div class="card-body">
+
+                        <form method='POST' style="width: 23rem;" class="p-3">
+                            {% csrf_token %}
+                            <h2 class="mb-3 pb-3 text-white text-center fw-bold"
+                                style="letter-spacing: 2px; font-family: 'Mohave';">Iniciar sesión</h2>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example18">Email address</label>
+                                <div class="mb-3 ">
+                                    <div class="input-group">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-envelope-o"></i>
+                                        </div>
+                                        <input class="form-control" id="email" name="username" type="text"
+                                            placeholder="example@gmail.com" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline">
+                                <label class="form-label" for="form2Example28">Password</label>
+                                <div class=" ">
+                                    <div class="input-group">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </div>
+                                        <input class="form-control" id="password" name="password" type="password"
+                                            placeholder="**********" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-4">
+                                <div class="col d-flex justify-content-center">
+                                </div>
+                                <div class="col text-end">
+                                    <a class="urlForm text-decoration-none" href="{% url 'recoverPass' %}">Olvidé mi
+                                        contraseña</a>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary text-white p-2 fs-5" type="submit">Ingresar</button>
+                            </div>
+                            <p class=" text-center small mb-5 mt-4 pb-lg-2 text-white fs-5">¿No tienes cuenta? <a
+                                    class="fs-5 urlForm text-decoration-none" href="{% url 'newUser' %}">Registrate</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

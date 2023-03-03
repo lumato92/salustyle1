@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icono.ico' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block style %} {% endblock style %}
+    <title>SALU STYLE | {% block titlepage %} {% endblock titlepage %}</title>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/salustyle.png' %}" alt="Salustyle img" width="170" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end me-3" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-5">
+                        <a class="nav-link fs-5 text-dark landing_listitem" aria-current="page"
+                            href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link fs-5 text-dark landing_listitem"
+                            href="{% url 'mainPage' %}">Historia Clinica</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link fs-5 text-dark landing_listitem"
+                            href="#novedades">Novedades</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link fs-5 text-dark landing_listitem"
+                            href="{% url 'perfil' %}">Mi Perfil</a>
+                    </li>
+                    <!-- <li class="nav-item me-5">
+                        <a class="nav-link fs-5 text-dark landing_listitem"
+                            href="{% url 'notificaciones' %}">Notificaciones</a>
+                    </li> -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="{% static 'images/test.png' %}" alt="Profile" class="rounded-circle">
+                          <span class="d-none d-md-block dropdown-toggle ps-2  fs-5 text-dark landing_listitem">{{user.last_name}}</span>
+                        </a><!-- End Profile Iamge Icon -->
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" >
+                          <li>
+                            <a class="dropdown-item d-flex align-items-center drop-menu"  href="{% url 'logout' %}">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                              <span class="text-dark">Sign Out</span>
+                            </a>
+                          </li>
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="main">
+        
+        {% block main_content %} {% endblock main_content%}
+
+        {% include 'novedades/novedades.html' %}
+    </main>
+    <footer class="footer">
+        <img src="{% static 'images/salustyle.png' %}" alt="Salustyle img" class="footer__img" style="width: 20%;" > 
+        <div class="footer__home">
+            <p>Home</p>
+            <ul class="footer__list">
+                <li><a href="">Perfil</a></li>
+                <li><a href="">Novedades</a></li>
+            </ul>
+        </div>
+        <div class="footer__historia">
+            <p>Historia Clinica</p>
+            <ul class="footer__list">
+                <li><a href="">Turnos Medicos</a></li>
+                <li><a href="{% url 'fichaMedica' %}">Ficha de Salud</a></li>
+                <li><a href="">Medicos</a></li>
+            </ul>
+        </div>
+        <div class="footer_contacto">
+            <p>Contacto</p>
+            <a href="">consulstas@salustyle.com</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>

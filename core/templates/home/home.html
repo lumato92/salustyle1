@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock style%}
+{% block titlepage %} Inicio {% endblock titlepage %}
+
+{% block main_content %}
+<section class="info">
+    <div class="info__content">
+        <h1 class="info__salustyle"><span class="inf__salu">SALU</span> <span class="inf__style">STYLE</span></h1>
+        <button class="inf__btn-register">Nuevo registro</button>
+        <input type="text" class="inf__input-search" placeholder="BUSCA MEDICOS Y TURNOS">
+    </div>
+    <div class="info__spam">
+
+    </div>
+
+</section>
+<section class="container-fluid p-0">
+    <div class="row g-0">
+        <div class="d-flex justify-content-end">
+            <hr class="separador">
+            <hr class="separador2">
+        </div>
+        <div class="mt-5 text-center ">
+            <div class="col">
+                <h3 class="textsalud__title">Una Solucion para tu salud</h3>
+                <p class="textsalud__description"> La historia clínica médica refleja de forma fidedigna todas las
+                    características</p>
+                <p class="textsalud__description">clínicas del paciente y su evolución periódica. Te brindamos la
+                    oportunidad de</p>
+                <p class="textsalud__description">realizar tu registro para cumplir con buen ejercicio sanitario.</p>
+                </p>
+            </div>
+        </div>
+        <div class="mt-5">
+            <h2 class="analisis-title mt-5">AHORA PODRÁS CARGAR TUS ANÁLISIS, TUS ÓRDENES MÉDICAS Y CETIFICADOS DE
+                VACUNACIÓN </h2>
+        </div>
+        <div class="d-flex">
+            <hr class="separadorAzul">
+            <hr class="separadorAzul2">
+        </div>
+        <div class="container p-0 text-center justify-content-center d-flex mt-4 mb-5">
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                <a href="{% url 'healthForm' %}" class="col icon me-5 shadow">
+                    <p class="mb-0 icon-title">Ficha de salud</p>
+                    <i class="fa fa-heartbeat prueba" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'newDoctor' %}" class="col icon me-5 shadow">
+                    <p class="mb-0 icon-title">Mis médicos</p>
+                    <i class="fa fa-user-md" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'newTurno' %}" class="col icon me-5 shadow">
+                    <p class="mb-0 icon-title">Turnos</p>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'newReceta' %}" class="col icon shadow">
+                    <p class="mb-0 icon-title">Receta</p>
+                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="registros-title mt-5 mb-5">ADEMÁS REGISTRAR DATOS DE TUS MÉDICOS DE CABECERA Y ANOTAR TUS PRÓXIMOS
+                TURNOS</h2>
+        </div>
+        <div class="d-grid gap-2 col-4 mx-auto mt-4 mb-4">
+            <a class="btn btn-primary text-white fs-4" href="{% url 'mainPage' %}">Ver mi historia clínica</a>
+        </div>
+    </div>
+    <div class="home3__content mt-5">
+        <img src="{% static 'images/Equilibrio.png' %}" alt="" class="home3__img">
+        <div class="home3__base">
+            <h3 class="home3__title">ACTIVIDAD AERÓBICA: SU IMPORTACIA </h3>
+            <p>El ejercicio aeróbico reduce el riesgo de padecer muchas afecciones, tales como obesidad, enfermedades
+                cardíacas, hipertensión arterial, diabetes tipo 2, síndrome metabólico, accidentes cerebrovasculares y
+                ciertos tipos de cáncer.</p>
+        </div>
+    </div>
+    <h3 class="home3__title--final mt-5 mb-5">ESTÁS A TIEMPO DE MEJORAR Y CONTROLAR TU SALUD</h3>
+</section>
+
+
+{% endblock main_content %}

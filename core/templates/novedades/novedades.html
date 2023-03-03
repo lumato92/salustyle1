@@ -1,0 +1,22 @@
+{% comment %} {% extends 'base.html' %}
+{% load static %}
+{% block titlepage %} Novedades {% endblock titlepage%} {% endcomment %}
+{% load static %}
+
+{% comment %} {% block novedades %} {% endcomment %}
+<section class="container-fluid p-0">
+  <div class="d-flex">
+    <hr class="separadorAzul">
+    <hr class="separadorAzul2">
+</div>
+  <div class="mt-4">
+    <h2 style="margin: 44px; font-family: 'Mulish';">NOVEDADES EN MEDICINA</h2>
+</div>
+<div class="container  justify-content-center d-flex" id="novedades">
+  <div class="col me-5 p-2"></div>
+  <div class="row row-cols-1 row-cols-md-3 g-4 text-center mb-3" id="noticias">
+  </div>
+</div>
+</section>
+  <script src="{% static 'js/newsapi.js' %}"></script>
+  {% comment %} {% endblock novedades%} {% endcomment %}

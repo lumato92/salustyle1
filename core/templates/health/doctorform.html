@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icono.ico' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>SALU STYLE | DOCTOR </title>
+  <style>
+    .card {
+      background-color: #F77E91;
+    }
+
+    .formulario {
+      min-height: 80vh;
+    }
+
+    @media (min-width: 768px) {
+      .gradient-form {
+        height: 100vh !important;
+      }
+    }
+  </style>
+  <style>
+
+  </style>
+</head>
+
+<body class="bodyLanding">
+  <div class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-white shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/salustyle.png' %}" alt="Salustyle img" width="170" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-flex justify-content-end me-3" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item me-5">
+              <a class="nav-link fs-5 fw-bold text-dark landing_listitem" href="{% url 'home' %}">Ir a Home</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item dropdown pe-3">
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img src="{% static 'images/test.png' %}" alt="Profile" class="rounded-circle">
+                <span
+                  class="d-none d-md-block dropdown-toggle ps-2  fs-5 text-dark landing_listitem">{{user.last_name}}</span>
+              </a><!-- End Profile Iamge Icon -->
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li>
+                  <a class="dropdown-item d-flex align-items-center drop-menu" href="{% url 'logout' %}">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <span class="text-dark">Sign Out</span>
+                  </a>
+                </li>
+              </ul><!-- End Profile Dropdown Items -->
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="h-100 gradient-form">
+      <div class="container py-4 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-10">
+            <div class="card rounded-3 text-black">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="card-body p-md-3 mx-md-4">
+                    <div class="text-center">
+                      <h4 class="mt-1 mb-4 pb-1 text-white" style="font-size: 40px;">MIS MÉDICOS</h4>
+                    </div>
+                    <form action="" method="post">
+                      {% csrf_token %}
+                      <div class="form-outline mb-4">
+                        <input type="text" id="md_fullname" class="form-control" placeholder="Nombre y apellido"
+                          name="md_fullname" required />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="md_specialize" class="form-control" placeholder="Especialidad"
+                          name="md_specialize" />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="email" id="md_mail" class="form-control" placeholder="Mail" name="md_mail" />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="md_contactphone" class="form-control" placeholder="Teléfono"
+                          name="md_contactphone" />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="md_address" class="form-control" placeholder="Dirección"
+                          name="md_address" />
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="md_institucion" class="form-control" placeholder="Institución"
+                          name="md_institucion" />
+                      </div>
+                      <div class="pt-2 text-center">
+                        <input class="btn btn-primary btn-lg text-white" type="submit" value="Enviar" />
+                        <a href="{% url 'home' %}" class="btn btn-secondary btn-lg">Atras</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                  <img src="{% static 'images/md_form_img.png' %}" alt="Doctor"
+                    class="w-100 h-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

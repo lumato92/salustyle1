@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/icono.ico' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>SALU STYLE | TURNO </title>
+  <style>
+    .card {
+      background-color: #F77E91;
+    }
+  </style>
+</head>
+
+<body class="bodyLanding">
+  <nav class="navbar navbar-expand-lg bg-white shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/salustyle.png' %}" alt="Salustyle img" width="170" height="70">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-end me-3" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item me-5">
+            <a class="nav-link fs-5 fw-bold text-dark landing_listitem" href="{% url 'home' %}">Ir a Home</a>
+          </li>
+          {% if user.is_authenticated %}
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="{% static 'images/test.png' %}" alt="Profile" class="rounded-circle">
+                          <span class="d-none d-md-block dropdown-toggle ps-2  fs-5 text-dark landing_listitem">{{user.last_name}}</span>
+                        </a><!-- End Profile Iamge Icon -->
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile" >
+                          <li>
+                            <a class="dropdown-item d-flex align-items-center drop-menu"  href="{% url 'logout' %}">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                              <span class="text-dark">Sign Out</span>
+                            </a>
+                          </li>
+                        </ul><!-- End Profile Dropdown Items -->
+                    </li>
+                    {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7 ">
+        <div class="card shadow-2-strong card-registration common-bkg" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-white text-center" style="font-size: 40px;">MIS RECETAS</h3>
+              <form action="" method="post" enctype='multipart/form-data'>
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-12 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="firstName">Descripcion</label>
+                    {{form.prescription}}
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-12 mb-4">
+
+                  <div class="form-outline">
+                    <label class="form-label" for="lastName">Receta Img</label>
+                    {{form.prescription_img}}
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <input class="btn btn-primary btn-lg text-white me-3" type="submit" value="Enviar" />
+                <a href="{% url 'home' %}" class="btn btn-secondary btn-lg">Atras</a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+
+</html>

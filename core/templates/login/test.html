@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Testing Login</title>
+</head>
+<body>
+    <h1>Testeo Login</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <a href= {% url 'loginUser' %} class="btn btn-primary">Login</a>
+                </div>
+                
+            </div>
+            <div class="col-6">
+                <div class="card">
+                    <a href={% url 'newUser' %} class="btn btn-primary"> Nuevo Usuario</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <a href={% url 'passwordChange' %} class="btn btn-secondary">Cambiar Password</a>
+                </div>
+            </div>
+                
+                
+            <div class="col-6">
+                    <div class="card">
+                        <a href="" class="btn btn-secondary">Recuperar Password</a>
+                    </div>
+            </div>
+        
+        </div>
+    </div>
+
+
+
+    <!-- jQuery -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Bootstrap 4 -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Mohave:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Mohave", sans-serif;
+  font-weight: 400;
+  color: #000000;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
+.gradient {
+  background: linear-gradient(
+    269.96deg,
+    rgba(247, 126, 145, 0.7) 0.02%,
+    rgba(149, 224, 130, 0.168) 99.96%
+  );
+}
+.bodyLanding {
+  background: url(../images/landing-bkg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.header {
+  height: 19vh;
+  background-color: white;
+  margin-top: 30px;
+  display: flex;
+}
+.header__img {
+  height: 120px;
+}
+.header__nav {
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+.header__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-basis: 780px;
+}
+.header__listitem:hover {
+  border-bottom: 4px solid black;
+  padding: 5px;
+}
+
+.landing_listitem:hover {
+  border-bottom: 4px solid #ed4b66;
+  padding: 5px;
+}
+
+.landing_listitem_active {
+  border-bottom: 4px solid #ed4b66;
+  padding: 5px;
+}
+
+.main {
+  flex-grow: 1;
+}
+.footer {
+  padding: 10px 0;
+  background: linear-gradient(
+    269.96deg,
+    rgba(247, 126, 145, 0.7) 0.02%,
+    rgba(149, 224, 130, 0.168) 99.96%
+  );
+  display: flex;
+  justify-content: space-around;
+}
+.footer__list {
+  list-style: none;
+}
+.footer__img {
+  width: 120px;
+}
+.footer__historia p,
+.footer_contacto p,
+.footer__home p {
+  padding-bottom: 10px;
+  font-weight: 500;
+  font-size: 25px;
+}
+/* =======
+   border-bottom: 4px solid black;
+   padding:5px;
+} */
+.header__listitem a {
+  text-decoration: none;
+}
+.main {
+  flex-grow: 1;
+}
+/* .footer{
+} */
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.info {
+  height: 70vh;
+  display: flex;
+}
+.info__form {
+  background-color: #f77e91;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-size: 45px;
+}
+.info__register {
+  padding: 10px;
+  color: #ffffff;
+  font-size: 30px;
+  background-color: #95e082;
+  border: 2px solid #95e082;
+  border-radius: 10px;
+}
+.info__register:hover {
+  border: 3px solid white;
+}
+.salu {
+  color: white;
+  font-weight: 300;
+}
+.style {
+  color: white;
+  font-weight: 700;
+}
+.info__content {
+  flex-grow: 1;
+}
+.info__img {
+  width: 200px;
+}
+
+#landing-info {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+}
+.landing-title {
+  margin: auto;
+  text-align: justify;
+}
+
+.landing-text {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 79px;
+  line-height: 100px;
+  align-items: center;
+  text-align: center;
+}
+
+.nav-profile img {
+  max-height: 36px;
+}
+
+.nav-profile span {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.drop-menu {
+  width: 80%;
+}
+
+/*--------------------------------------------------------------
+# Profie Page
+--------------------------------------------------------------*/
+/* @media (min-width: 1200px) {
+  .profile {
+    margin-left: 300px;
+  }
+} */
+.profile {
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+.profile .profile-card img {
+  max-width: 120px;
+}
+
+.profile .profile-card h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 10px 0 0 0;
+}
+
+.profile .profile-card h3 {
+  font-size: 20px;
+}
+
+.profile .profile-card .social-links a {
+  font-size: 20px;
+  display: inline-block;
+  color: rgba(1, 41, 112, 0.5);
+  line-height: 0;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.profile .profile-card .social-links a:hover {
+  color: #012970;
+}
+
+.profile .profile-overview .row {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.profile .profile-overview .card-title {
+  color: #012970;
+}
+
+.profile .profile-overview .label {
+  font-weight: 600;
+  color: rgba(250, 252, 255, 0.6);
+  font-size: 20px;
+}
+
+.profile .profile-edit label {
+  font-weight: 600;
+  color: rgba(250, 252, 255);
+  font-size: 20px;
+}
+
+.profile .profile-edit img {
+  max-width: 120px;
+}

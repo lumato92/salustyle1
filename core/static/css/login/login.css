@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Mohave:wght@400;500&display=swap");
+:root {
+  --letter: "Mohave";
+  --letter-size-small: 15px;
+  --letter-size-medium: 20px;
+  --letter-size-long: 30px;
+
+  --letter-weight-medium: 400;
+  --letter-weigth-long: 500;
+
+  --color-primary: #f77e91;
+  --color-secondary: #5589f5;
+  --color-background-input: #a8c2f8;
+  --color-base: #fff;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Mohave";
+}
+.home {
+  background-color: hsl(0, 0%, 96%);
+}
+
+.card {
+  background-color: #f77e91;
+}
+
+.login {
+  background-color: #d9d9d9;
+}
+
+.urlForm {
+  color: #95e082;
+}
+
+.urlForm:hover {
+  color: #c7f0bd;
+}
+
+.logo {
+    background-color: #F5F5F5;
+
+}

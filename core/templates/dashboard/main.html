@@ -1,0 +1,613 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icono.ico' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <title>SALU STYLE | PERFIL</title>
+</head>
+
+<body class="bodyLanding">
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- CONTAINER -->
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-white shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'images/salustyle.png' %}" alt="Salustyle img" width="170" height="70">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-end me-3" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item me-5">
+                            <a class="nav-link fs-5 text-dark landing_listitem" aria-current="page"
+                                href="{% url 'home' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link fs-5 text-dark landing_listitem_active"
+                                href="{% url 'mainPage' %}">Historia
+                                Clinica</a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a class="nav-link fs-5 text-dark landing_listitem" href="{% url 'perfil' %}">Mi Perfil</a>
+                        </li>
+                        <!-- <li class="nav-item me-5">
+                            <a class="nav-link fs-5 text-dark landing_listitem"
+                                href="{% url 'notificaciones' %}">Notificaciones</a>
+                        </li> -->
+                        {% if user.is_authenticated %}
+                        <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'images/test.png' %}" alt="Profile" class="rounded-circle">
+                                <span
+                                    class="d-none d-md-block dropdown-toggle ps-2  fs-5 text-dark landing_listitem">{{user.last_name}}</span>
+                            </a><!-- End Profile Iamge Icon -->
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center drop-menu"
+                                        href="{% url 'logout' %}">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        <span class="text-dark">Sign Out</span>
+                                    </a>
+                                </li>
+                            </ul><!-- End Profile Dropdown Items -->
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- SIDERBAR -->
+        <aside id="sidebar" class="sidebar">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item mt-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="{% url 'newReceta' %}" >
+                                    <i class="fa-solid fa-receipt"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a 
+                                    class="text-hide panel-heading panel-collapse collapse">
+                                    <span class="text-white texto">Mis órdenes</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li><!-- End Ordenes Nav -->
+
+                <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="">
+                                    <i class="fa-solid fa-syringe "></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a 
+                                    class="col text-hide panel-heading panel-collapse collapse">
+                                    <span class="text-white texto">Mis vacunas</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </li><!-- End vacunas Page Nav -->
+
+                <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="{% url 'newDoctor' %}">
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a 
+                                    class="col text-hide panel-heading panel-collapse collapse">
+                                    <span class="text-white texto">Mis médicos</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </li><!-- End doctor Page Nav -->
+
+                <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="{% url 'newTurno' %}">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a 
+                                    class="col text-hide panel-heading panel-collapse collapse">
+                                    <span class="text-white texto">Mis turnos</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </li>
+                <!-- End turnos Page Nav -->
+
+                <!-- <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="">
+                                    <i class="fa-sharp fa-solid fa-address-card"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'healthForm' %}"
+                                class="col text-hide panel-heading panel-collapse collapse">
+                                <span class="text-white texto">Mis certificaciones</span>
+                            </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </li>-->
+                <!--End certificaciones Page Nav -->
+
+                <!-- <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="">
+                                    <i class="fa-sharp fa-solid fa-pills"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'healthForm' %}"
+                                class="col text-hide panel-heading panel-collapse collapse">
+                                <span class="text-white texto">Medicación</span>
+                            </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                </li> -->
+                <!-- End medicacion Page Nav -->
+
+                <li class="nav-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-0 panel-heading">
+                                <a class="nav-link icon" href="">
+                                    <i class="fa-solid fa-book-medical"></i>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'healthForm' %}"
+                                    class="col text-hide panel-heading panel-collapse collapse">
+                                    <span class="text-white texto">Mis reporte anual</span>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </li><!-- End reporte Page Nav -->
+
+            </ul>
+
+        </aside>
+        <!-- END SIDEBAR -->
+
+
+        <div class="position-relative">
+            <div class="position-absolute top-0 end-0 me-4 ">
+                <div class="col">
+                    <div class="card perfil">
+                        <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                            <img src="{% static 'images/test.png' %}" alt="perfil_usuario"
+                                class="mt-5 rounded-circle shadow">
+                            <h2 style="font-family: 'Mohave';" class="mt-2">{{user.first_name}} {{user.last_name}} <a
+                                    class="" href="{% url 'perfil' %}"><i class="edit fa-sharp fa-solid fa-pen"></i></a></h2>
+                            <h3 style="font-family: 'Mohave'; color: #5589F5;">ID {{user.id}}</h3>
+                            <div class="row text-center justify-content-center mt-3">
+                                <div class="col">
+                                    <div class="">
+                                        <p class="caracteristicas">Peso</p>
+                                        <button class="btn btn-primary text-nowrap text-white">{{health.weight}}
+                                            kg</button>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="">
+                                        <p class="caracteristicas">Altura</p>
+                                        <button class="btn btn-primary text-nowrap text-white">{{health.height}}
+                                            cm</button>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="">
+                                        <p class="caracteristicas">Edad</p>
+                                        <button class="btn btn-primary text-nowrap text-white">{{age}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid p-0 mt-5">
+                                <div class="row text-nowrap">
+                                    <div class="col">
+                                        <p>Descanso</p>
+                                    </div>
+                                    <div class="col">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 50%;"
+                                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">6hrs</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row text-nowrap">
+                                    <div class="col">
+                                        <p>Usa lentes</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        {% if health.sedentary_work == 'si' %}
+                                        <i class="fa-sharp fa-solid fa-circle-check success"></i>
+                                        {% else %}
+                                        <i class="fa-sharp fa-solid fa-circle-check danger"></i>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <div class="row text-nowrap">
+                                    <div class="col">
+                                        <p>Fumador</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        {% if health.smoker == 'si' %}
+                                        <i class="fa-sharp fa-solid fa-circle-check success"></i>
+                                        {% else %}
+                                        <i class="fa-sharp fa-solid fa-circle-check danger"></i>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row text-nowrap">
+                                    <div class="col">
+                                        <p>Actividad física</p>
+                                    </div>
+                                    <div class="col text-center">
+                                        {% if health.sedentary_work == 'si' %}
+                                        <i class="fa-sharp fa-solid fa-circle-check success"></i>
+                                        {% else %}
+                                        <i class="fa-sharp fa-solid fa-circle-check danger"></i>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <section class="" id="general">
+            <main id="main" class="main">
+
+                <div class="pagetitle">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control form-control-lg search"
+                                placeholder="Buscá médicos y turnos">
+                        </div>
+                    </form>
+                </div><!-- End Page Title -->
+
+                <section class="section dashboard">
+                    <div class="row">
+                        <!-- derecha columns -->
+                        <div class="col-lg-6">
+                            <!-- recetas -->
+                            <div class="col-12">
+                                <div class="card mainCard shadow border-0">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <h5 class="col card-title titleCardMain">Mis Recetas</h5>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div id="carouselReceta" class="carousel slide"
+                                                    data-bs-interval="false" data-ride="carousel"
+                                                    data-pause="hover">
+
+                                                    <div class="carousel-inner">
+                                                        {% for receta in recetas %}
+                                                        <div
+                                                            class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                                                            <div class="d-md-block w-100">
+                                                                <h5 class=" alert alert-success profesionesTitle w-auto
+                                                                    text-center">{{receta.prescription}}</h5>
+                                                                <div
+                                                                    class="card-body informacionMedico mt-3 row justify-content-center align-content-center">
+                                                                    <div class="col-auto">
+                                                                        {% if receta.prescription_img %}
+                                                                            <img src="{{ receta.prescription_img.url }}" class="img-fluid p-3" alt="">
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    <button class="carousel-control-prev mt-3 align-top"
+                                                        type="button" data-bs-target="#carouselReceta"
+                                                        data-bs-slide="prev">
+                                                        <span class="carousel-control-prev-icon"
+                                                            aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Previous</span>
+                                                    </button>
+                                                    <button class="carousel-control-next mt-3 align-top"
+                                                        type="button" data-bs-target="#carouselReceta"
+                                                        data-bs-slide="next">
+                                                        <span class="carousel-control-next-icon"
+                                                            aria-hidden="true"></span>
+                                                        <span class="visually-hidden">Next</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- End recetas -->
+
+                        </div>
+                        <!-- End derecha columns -->
+
+                        <!-- izquierda columns -->
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <!-- Customers Card -->
+                                <div class="col-xxl-12 col-xl-12">
+
+                                    <div class="card mainCard shadow border-0">
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <h5 class="col card-title titleCardMain">Mis Médicos</h5>
+
+                                                <button class=" col-4 mb-2 me-3 btn btn-primary" id="new-doctor">Agregar
+                                                    Medico</button>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div id="carouselExampleDark" class="carousel slide"
+                                                        data-bs-interval="false" data-ride="carousel"
+                                                        data-pause="hover">
+
+                                                        <div class="carousel-inner">
+                                                            {% for doctor in doctors %}
+                                                            <div
+                                                                class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                                                                <div class="d-md-block w-100">
+                                                                    <h5 class=" alert alert-success profesionesTitle w-auto
+                                                                        text-center">{{doctor.md_specialize}}</h5>
+                                                                    <div
+                                                                        class="card-body informacionMedico mt-3 row justify-content-center align-content-center">
+                                                                        <div class="col-auto">
+                                                                            <p> <i class="bi bi-person icono"></i>
+                                                                                {{doctor.md_fullname}}</p>
+                                                                            <p> <i class="bi bi-envelope icono"></i>
+                                                                                {{doctor.md_mail}}</p>
+                                                                            <p> <i class="bi bi-phone icono"></i>
+                                                                                {{doctor.md_specialize}}</p>
+                                                                            <p> <i class="bi bi-geo-alt icono"></i>
+                                                                                {{doctor.md_address}}</p>
+                                                                            <p> <i class="bi bi-hospital icono"></i>
+                                                                                {{doctor.md_institucion}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <button class="carousel-control-prev mt-3 align-top"
+                                                            type="button" data-bs-target="#carouselExampleDark"
+                                                            data-bs-slide="prev">
+                                                            <span class="carousel-control-prev-icon"
+                                                                aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next mt-3 align-top"
+                                                            type="button" data-bs-target="#carouselExampleDark"
+                                                            data-bs-slide="next">
+                                                            <span class="carousel-control-next-icon"
+                                                                aria-hidden="true"></span>
+                                                            <span class="visually-hidden">Next</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!-- End Customers Card -->
+
+                                <div class="col-xxl-12 col-xl-12">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="content w-100">
+                                                    <div class="calendar-container">
+                                                        <div class="calendar">
+                                                            <div class="year-header">
+                                                                <span class="left-button fa fa-chevron-left" id="prev"> </span>
+                                                                <span class="year" id="label"></span>
+                                                                <span class="right-button fa fa-chevron-right" id="next"> </span>
+                                                            </div>
+                                                            <table class="months-table w-100">
+                                                                <tbody>
+                                                                    <tr class="months-row">
+                                                                        <td class="month">Ene</td>
+                                                                        <td class="month">Feb</td>
+                                                                        <td class="month">Mar</td>
+                                                                        <td class="month">Abr</td>
+                                                                        <td class="month">May</td>
+                                                                        <td class="month">Jun</td>
+                                                                        <td class="month">Jul</td>
+                                                                        <td class="month">Ago</td>
+                                                                        <td class="month">Sep</td>
+                                                                        <td class="month">Oct</td>
+                                                                        <td class="month">Nov</td>
+                                                                        <td class="month">Dic</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+            
+                                                            <table class="days-table w-100">
+                                                                <td class="day">DO</td>
+                                                                <td class="day">LU</td>
+                                                                <td class="day">MA</td>
+                                                                <td class="day">MI</td>
+                                                                <td class="day">JU</td>
+                                                                <td class="day">VI</td>
+                                                                <td class="day">SA</td>
+                                                            </table>
+                                                            <div class="frame">
+                                                                <table class="dates-table w-100">
+                                                                    <tbody class="tbody">
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <button class="button" id="add-button">Agregar Turno</button>
+                                                            <!-- <button class="button" id="new-turno">Agregar Turno</button> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="events-container ">
+                                                    </div>
+                                                    <div class="dialog" id="dialog">
+                                                        <h2 class="dialog-header"> Nuevo Turno </h2>
+                                                        <form class="form" id="form">
+                                                            <div class="form-container" align="center">
+                                                                <label class="form-label" id="valueFromMyButton"
+                                                                    for="name">Lugar</label>
+                                                                <input class="input" type="text" id="name" maxlength="36"
+                                                                    name="place">
+                                                                <label class="form-label" id="valueFromMyButton"
+                                                                    for="count">Profesional</label>
+                                                                <select class="input" id="doctor"
+                                                                    aria-label="Default select example" name="doctor"
+                                                                    aria-placeholder="Elige" required>
+                                                                    {% for doctor in doctors %}
+                                                                    <option value="{{doctor.id}}" {% if form.doctor == doctor %}
+                                                                        selected {% endif %}>{{doctor}}
+                                                                    </option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                                <input type="button" value="Cancel" class="button"
+                                                                    id="cancel-button">
+                                                                <input type="button" value="OK" class="button button-white"
+                                                                    id="ok-button">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div><!-- End izquierda columns -->
+
+                    </div>
+                </section>
+
+            </main>
+
+        </section>
+
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script>
+        window.data = { args: "{{ turnos | safe}}", url: "{% url 'turnoModal' %}" }
+    </script>
+    <script>
+
+        $(".panel-heading").hover(
+            function () {
+                $('.panel-collapse').collapse('show');
+                $('#general').addClass('toggle-sidebar');
+            }, function () {
+                $('.panel-collapse').collapse('hide');
+                $('#general').removeClass('toggle-sidebar');
+            }
+        );
+
+        $(document).ready(function () {
+
+            $("#new-doctor").modalForm({
+                formURL: "{% url 'newDoctorTest' %}",
+                asyncSettings: {
+                    closeOnSubmit: true,
+
+                }
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            $("#new-turno").modalForm({
+                formURL: "{% url 'newTurno' %}",
+                asyncSettings: {
+                    closeOnSubmit: true,
+
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
